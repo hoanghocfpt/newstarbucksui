@@ -1,1 +1,152 @@
-<p>menu works!</p>
+<!-- component -->
+<script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" />
+<!-- page -->
+<main class="min-h-screen w-full bg-gray-100 text-gray-700" x-data="layout">
+    <div class="flex">
+        <!-- aside -->
+        <aside class="bg-gray-800 text-white w-64 min-h-screen p-4">
+            <nav>
+              <ul class="space-y-2">
+                <li class="opcion-con-desplegable">
+                  <div class="flex items-center justify-between p-2 hover:bg-gray-700">
+                    <div class="flex items-center">
+                      <i class="fas fa-calendar-alt mr-2"></i>
+                      <span>Agenda</span>
+                    </div>
+                    <i class="fas fa-chevron-down text-xs"></i>
+                  </div>
+                  <ul class="desplegable ml-4 hidden">
+                    <li>
+                      <a href="#" class="block p-2 hover:bg-gray-700 flex items-center">
+                        <i class="fas fa-chevron-right mr-2 text-xs"></i>
+                        Gestion de citas
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" class="block p-2 hover:bg-gray-700 flex items-center">
+                        <i class="fas fa-chevron-right mr-2 text-xs"></i>
+                        Polizas
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="opcion-con-desplegable">
+                  <div class="flex items-center justify-between p-2 hover:bg-gray-700">
+                    <div class="flex items-center">
+                      <i class="fas fa-money-bill-wave mr-2"></i>
+                      <span>Contabilidad</span>
+                    </div>
+                    <i class="fas fa-chevron-down text-xs"></i>
+                  </div>
+                  <ul class="desplegable ml-4 hidden">
+                    <li>
+                      <a href="#" class="block p-2 hover:bg-gray-700 flex items-center">
+                        <i class="fas fa-chevron-right mr-2 text-xs"></i>
+                        Tratamientos
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" class="block p-2 hover:bg-gray-700 flex items-center">
+                        <i class="fas fa-chevron-right mr-2 text-xs"></i>
+                        Gastos
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" class="block p-2 hover:bg-gray-700 flex items-center">
+                        <i class="fas fa-chevron-right mr-2 text-xs"></i>
+                        Facturas
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="opcion-con-desplegable">
+                  <div class="flex items-center justify-between p-2 hover:bg-gray-700">
+                    <div class="flex items-center">
+                      <i class="fas fa-chart-bar mr-2"></i>
+                      <span>Informes</span>
+                    </div>
+                    <i class="fas fa-chevron-down text-xs"></i>
+                  </div>
+                  <ul class="desplegable ml-4 hidden">
+                    <li>
+                      <a href="#" class="block p-2 hover:bg-gray-700 flex items-center">
+                        <i class="fas fa-chevron-right mr-2 text-xs"></i>
+                        Presupuestos
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" class="block p-2 hover:bg-gray-700 flex items-center">
+                        <i class="fas fa-chevron-right mr-2 text-xs"></i>
+                        Informe médico
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="opcion-con-desplegable">
+                  <div class="flex items-center justify-between p-2 hover:bg-gray-700">
+                    <div class="flex items-center">
+                      <i class="fas fa-file-alt mr-2"></i>
+                      <span>Documentación</span>
+                    </div>
+                    <i class="fas fa-chevron-down text-xs"></i>
+                  </div>
+                  <ul class="desplegable ml-4 hidden">
+                    <li>
+                      <a href="#" class="block p-2 hover:bg-gray-700 flex items-center">
+                        <i class="fas fa-chevron-right mr-2 text-xs"></i>
+                        Firmas pendientes
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" class="block p-2 hover:bg-gray-700 flex items-center">
+                        <i class="fas fa-chevron-right mr-2 text-xs"></i>
+                        Documentos
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <!-- Agrega más enlaces para la navegación lateral -->
+              </ul>
+            </nav>
+          </aside>
+
+        <!-- main content page -->
+        <article class="w-full p-4">
+            <!-- component -->
+            <div class="bg-white">
+                <div class="py-16 sm:py-24 lg:mx-auto lg:max-w-7xl lg:px-8">
+                    <div class="flex items-center justify-between px-4 sm:px-6 lg:px-0">
+                        <h2 class="text-2xl font-bold tracking-tight text-gray-900">Cafe</h2>
+                    </div>
+                
+                    <div class="relative mt-8">
+                        <div class="relative -mb-6 w-full overflow-x-auto pb-6">
+                        <ul role="list" class="mx-4 inline-flex space-x-8 sm:mx-6 lg:mx-0 lg:grid lg:grid-cols-4 lg:gap-x-8 lg:space-x-0">
+                            <li class="inline-flex w-64 flex-col text-center lg:w-auto" *ngFor="let p of listProduct ">
+                            <div class="group relative"  >
+                                <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200">
+                                <img src="{{p.image}}" alt="Black machined steel pen with hexagonal grip and small white logo at top." class="h-full w-full object-cover object-center group-hover:opacity-75">
+                                </div>
+                                <div class="mt-6">
+                                <h3 class="mt-1 font-semibold text-gray-900">
+                                    <a href="#">
+                                    <span class="absolute inset-0"></span>
+                                    {{p.name}}
+                                    </a>
+                                </h3>
+                                </div>
+                            </div>
+                            </li>
+                            
+                            <!-- More products... -->
+                        </ul>
+                        </div>
+                    </div>
+              
+                </div>
+            </div>
+            
+        </article>
+    </div>
+</main>
