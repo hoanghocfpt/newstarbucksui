@@ -6,5 +6,6 @@ export interface IProduct {
     category: string;
     category2: String;
     slug: string;
-
+    price: number;
+    listPrice: [number];
 }
