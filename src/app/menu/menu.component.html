@@ -4,18 +4,18 @@
 <main class="bg-white">
   <div class="container mx-auto px-4">
     <div class="flex flex-col md:flex-row">
-      <div class="w-full md:w-1/4 mb-4 md:mb-0 border-r">
-        <ul class="space-y-4 text-center mt-[60px]">
+      <div class="w-full md:w-1/4 mb-4 md:mb-0">
+        <ul class="space-y-4 text-left mt-[60px]">
           <li *ngFor="let c of listCategories"><a href="#" class="block text-lg">{{c.name}}</a></li>
         </ul>
       </div>
 
-      <div class="w-full md:w-3/4 mt-[50px] mb-[40px] p-2">
-        <h2 class="text-2xl font-bold mb-4">Đồ Uống Mới Mùa Hè</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="w-full mt-[50px] mb-[40px] p-2">
+        <h2 class="text-2xl font-bold mb-4">CAFE</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <div class="text-center" *ngFor="let p of listProduct ">
-            <img src="{{p.image}}" alt="{{p.name}}" class="w-full h-[325px] object-cover mb-2 shadow-xl">
-            <h3 class="text-lg font-bold">{{p.name}}</h3>
+            <img src="{{p.image}}" alt="{{p.name}}" class="w-full h-[250px] object-cover mb-2 rounded-md">
+            <h3 class="text-lg font-medium">{{p.name}}</h3>
             <p class="text-lg">{{p.price}}</p>
           </div>
         </div>
