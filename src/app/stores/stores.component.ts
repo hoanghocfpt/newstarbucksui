@@ -14,11 +14,12 @@ export class StoresComponent {
   constructor(private s: StoresService) { }
   listStore: IStore[] = [];
   listSearch: IStore[] = []
+  listloc: IStore[] = []
+  opID : any;
   ngOnInit(): void {
     this.s.getStore().subscribe(data => {
       this.listStore = data as IStore[];
       this.listSearch = data as IStore[];
-      console.log("this.listStore=", this.listStore);
     });
   }
   search() {
@@ -27,5 +28,11 @@ export class StoresComponent {
       alert('Không tìm thấy cửa hàng!');
     }
   }
+  onCitySelected(event: any) {
+    this.opID = event.target.value; 
+    this.listSearch = this.listStore.filter(store => store.role === this.opID);
+  }
+  
+  
   
 }

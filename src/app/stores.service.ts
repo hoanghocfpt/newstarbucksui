@@ -6,6 +6,7 @@ export interface IStore {
   address: number;
   link: string;
   iframe: string;
+  role: number;
 }
 @Injectable({
   providedIn: 'root'
