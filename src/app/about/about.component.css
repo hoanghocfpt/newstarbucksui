@@ -1,0 +1,14 @@
+.fade-left {
+    position: relative;
+    overflow: hidden;
+}
+
+.fade-left::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+}
