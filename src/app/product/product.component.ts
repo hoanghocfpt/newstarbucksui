@@ -21,7 +21,6 @@ export class ProductComponent implements OnInit {
   product: any = {};
   categories: any = [];
   bigImage: any;
-  id: any;
   isLoading = true;
 
   constructor(
@@ -30,8 +29,8 @@ export class ProductComponent implements OnInit {
     private router: ActivatedRoute
   ) {}
 
+  id:any = this.router.snapshot.paramMap.get('id');
   ngOnInit(): void {
-    this.id = this.router.snapshot.paramMap.get('id');
 
     forkJoin({
       categories: this.categoryService.getCategories(),

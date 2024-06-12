@@ -1,0 +1,97 @@
+<div class="z-50 bg-[#0000001a] fixed top-0 left-0 flex justify-center items-center w-full h-full">
+    <button class="absolute bg-white rounded-full p-5 flex justify-center items-center top-[70px] md:top-24 right-4 w-8 h-8" (click)="closePopup()">
+        <svg class="w-8 h-8 md:w-5 md:h-5 flex-shrink-0" viewBox="-0.5 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 21.32L21 3.32001" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M3 3.32001L21 21.32" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+    </button>
+    <!-- nếu click ngoài thẻ div bên dưới thẻ sẽ set isOpenSearch = false -->
+    <div class="bg-white md:rounded-2xl h-full md:h-auto pt-10 md:py-5 px-6 mt-16 w-full md:max-w-[800px]">
+        <h2 class="block md:hidden font-semibold text-2xl mb-4 w-[90%]">Tìm kiếm một sản phẩm nào đó...</h2>
+        <div class="flex relative items-center pb-3 gap-3 border-b mb-4">
+            <svg class="w-6 h-6" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>search</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"> <g id="Icon-Set" sketch:type="MSLayerGroup" transform="translate(-256.000000, -1139.000000)" fill="#000000"> <path d="M269.46,1163.45 C263.17,1163.45 258.071,1158.44 258.071,1152.25 C258.071,1146.06 263.17,1141.04 269.46,1141.04 C275.75,1141.04 280.85,1146.06 280.85,1152.25 C280.85,1158.44 275.75,1163.45 269.46,1163.45 L269.46,1163.45 Z M287.688,1169.25 L279.429,1161.12 C281.591,1158.77 282.92,1155.67 282.92,1152.25 C282.92,1144.93 276.894,1139 269.46,1139 C262.026,1139 256,1144.93 256,1152.25 C256,1159.56 262.026,1165.49 269.46,1165.49 C272.672,1165.49 275.618,1164.38 277.932,1162.53 L286.224,1170.69 C286.629,1171.09 287.284,1171.09 287.688,1170.69 C288.093,1170.3 288.093,1169.65 287.688,1169.25 L287.688,1169.25 Z" id="search" sketch:type="MSShapeGroup"> </path> </g> </g> </g></svg>
+            <input (keyup)="keyupSearch()" [(ngModel)]="keyword" type="text" placeholder="Nhập tên sản phẩm" class="border-none w-full outline-none">
+            <div (click)="deleteKeyword()" class="absolute hidden top-0 right-0 w-5 h-5 md:flex justify-center items-center cursor-pointer">
+                <svg class="w-4 h-4" viewBox="0 0 1024 1024" fill="#000000" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M512 897.6c-108 0-209.6-42.4-285.6-118.4-76-76-118.4-177.6-118.4-285.6 0-108 42.4-209.6 118.4-285.6 76-76 177.6-118.4 285.6-118.4 108 0 209.6 42.4 285.6 118.4 157.6 157.6 157.6 413.6 0 571.2-76 76-177.6 118.4-285.6 118.4z m0-760c-95.2 0-184.8 36.8-252 104-67.2 67.2-104 156.8-104 252s36.8 184.8 104 252c67.2 67.2 156.8 104 252 104 95.2 0 184.8-36.8 252-104 139.2-139.2 139.2-364.8 0-504-67.2-67.2-156.8-104-252-104z" fill=""></path><path d="M707.872 329.392L348.096 689.16l-31.68-31.68 359.776-359.768z" fill=""></path><path d="M328 340.8l32-31.2 348 348-32 32z" fill=""></path></g></svg>
+            </div>
+        </div>
+        <div>
+            <span class="font-semibold text-lg mb-3">Thực đơn</span>
+            <div class="scrollbar flex flex-col mb-3 gap-3 max-h-[450px] overflow-y-scroll overflow-x-hidden">
+                <div class="flex flex-col mb-3 gap-3">
+                    <div *ngFor="let p of searchProducts" class="group py-2 px-3 flex items-center gap-3 hover:bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
+                        <div class="h-12 w-12 rounded-lg overflow-hidden">
+                            <img class="w-full h-full object-cover" src="{{p.image}}" alt="">
+                        </div>
+                        <div>
+                            <span [routerLink]="['product', p._id]" (click)="closePopup()" class="group-hover:text-[#02754B] group-hover:underline font-medium text-lg">{{p.name}}</span>
+                            <p *ngIf="p.price" >{{p.price}}</p>
+                            <div class="flex items-center gap-2" *ngIf="p.listPrice">
+                                <span class="">{{p.listPrice[0] | currency:'VND':'đ':'1.0-0':'vi'}}</span>
+                                <p>~</p>
+                                <span class="">{{p.listPrice[2] | currency:'VND':'đ':'1.0-0':'vi'}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="searchProducts.length==0">
+                    <h2>không tìm thấy sản phẩm</h2>
+                </div>
+            </div>
+            <!-- <span class="font-semibold text-lg mb-3">Bài viết</span>
+            <div class="scrollbar grid grid-cols-2 md:grid-cols-3 gap-4 pt-3 max-h-[260px] overflow-y-scroll overflow-x-hidden">
+                <div class="w-full">
+                    <div class="w-full">
+                        <img class="w-full h-full object-cover" src="https://i1-kinhdoanh.vnecdn.net/2023/11/21/starbucks-china-1700556925-8524-1700557200.jpg?w=500&h=300&q=100&dpr=1&fit=crop&s=VmO73611RJDmYbHdF_AP0w" alt="">
+                    </div>
+                    <div class="py-3">
+                        <span class="font-medium line-clamp-1">baiviet1</span>
+                        <p class="line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem deleniti voluptate voluptates vitae sapiente eius possimus quaerat repellendus rem. Sunt!</p>
+                    </div>
+                </div>
+                <div class="w-full">
+                    <div class="w-full">
+                        <img class="w-full h-full object-cover" src="https://i1-kinhdoanh.vnecdn.net/2023/11/21/starbucks-china-1700556925-8524-1700557200.jpg?w=500&h=300&q=100&dpr=1&fit=crop&s=VmO73611RJDmYbHdF_AP0w" alt="">
+                    </div>
+                    <div class="py-3">
+                        <span class="font-medium line-clamp-1">baiviet1</span>
+                        <p class="line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem deleniti voluptate voluptates vitae sapiente eius possimus quaerat repellendus rem. Sunt!</p>
+                    </div>
+                </div>
+                <div class="w-full">
+                    <div class="w-full">
+                        <img class="w-full h-full object-cover" src="https://i1-kinhdoanh.vnecdn.net/2023/11/21/starbucks-china-1700556925-8524-1700557200.jpg?w=500&h=300&q=100&dpr=1&fit=crop&s=VmO73611RJDmYbHdF_AP0w" alt="">
+                    </div>
+                    <div class="py-3">
+                        <span class="font-medium line-clamp-1">baiviet1</span>
+                        <p class="line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem deleniti voluptate voluptates vitae sapiente eius possimus quaerat repellendus rem. Sunt!</p>
+                    </div>
+                </div>
+                <div class="w-full">
+                    <div class="w-full">
+                        <img class="w-full h-full object-cover" src="https://i1-kinhdoanh.vnecdn.net/2023/11/21/starbucks-china-1700556925-8524-1700557200.jpg?w=500&h=300&q=100&dpr=1&fit=crop&s=VmO73611RJDmYbHdF_AP0w" alt="">
+                    </div>
+                    <div class="py-3">
+                        <span class="font-medium line-clamp-1">baiviet1</span>
+                        <p class="line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem deleniti voluptate voluptates vitae sapiente eius possimus quaerat repellendus rem. Sunt!</p>
+                    </div>
+                </div>
+                <div class="w-full">
+                    <div class="w-full">
+                        <img class="w-full h-full object-cover" src="https://i1-kinhdoanh.vnecdn.net/2023/11/21/starbucks-china-1700556925-8524-1700557200.jpg?w=500&h=300&q=100&dpr=1&fit=crop&s=VmO73611RJDmYbHdF_AP0w" alt="">
+                    </div>
+                    <div class="py-3">
+                        <span class="font-medium line-clamp-1">baiviet1</span>
+                        <p class="line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem deleniti voluptate voluptates vitae sapiente eius possimus quaerat repellendus rem. Sunt!</p>
+                    </div>
+                </div>
+                <div class="w-full">
+                    <div class="w-full">
+                        <img class="w-full h-full object-cover" src="https://i1-kinhdoanh.vnecdn.net/2023/11/21/starbucks-china-1700556925-8524-1700557200.jpg?w=500&h=300&q=100&dpr=1&fit=crop&s=VmO73611RJDmYbHdF_AP0w" alt="">
+                    </div>
+                    <div class="py-3">
+                        <span class="font-medium line-clamp-1">baiviet1</span>
+                        <p class="line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem deleniti voluptate voluptates vitae sapiente eius possimus quaerat repellendus rem. Sunt!</p>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</div>
