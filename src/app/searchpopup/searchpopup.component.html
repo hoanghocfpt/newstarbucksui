@@ -17,12 +17,12 @@
             <div class="scrollbar flex flex-col mb-3 gap-3 max-h-[450px] overflow-y-scroll overflow-x-hidden">
                 <div class="flex flex-col mb-3 gap-3">
                     <div *ngFor="let p of searchProducts" class="group py-2 px-3 flex items-center gap-3 hover:bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
-                        <div class="h-12 w-12 rounded-lg overflow-hidden">
+                        <div class="h-12 w-12 flex-shrink-0 rounded-lg overflow-hidden">
                             <img class="w-full h-full object-cover" src="{{p.image}}" alt="">
                         </div>
                         <div>
-                            <span [routerLink]="['product', p._id]" (click)="closePopup()" class="group-hover:text-[#02754B] group-hover:underline font-medium text-lg">{{p.name}}</span>
-                            <p *ngIf="p.price" >{{p.price}}</p>
+                            <span [routerLink]="['product', p._id]" (click)="closePopup()" class="group-hover:text-[#02754B] group-hover:underline font-medium text-sm md:text-lg">{{p.name}}</span>
+                            <p *ngIf="p.price" >{{p.price | currency:'VND':'đ':'1.0-0':'vi'}}</p>
                             <div class="flex items-center gap-2" *ngIf="p.listPrice">
                                 <span class="">{{p.listPrice[0] | currency:'VND':'đ':'1.0-0':'vi'}}</span>
                                 <p>~</p>
