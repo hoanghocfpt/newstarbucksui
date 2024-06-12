@@ -1,12 +1,11 @@
-<script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" />
+
 
 <div class="bg-white">
   <div class="container grid grid-cols-1 md:grid-cols-[20%,1fr] mx-auto px-4">
     <div class="">
       <div class="w-full mb-4 md:mb-0">
         <ul *ngIf="!isLoading" class="flex flex-col sm:flex-row md:flex-col gap-4 sm:gap-6 items-start sm:items-center md:items-start text-left mt-[30px] md:mt-[60px]">
-          <li routerLink="/menu" ><a class="inline-block text-lg font-bold">Tất cả</a></li>
+          <li routerLink="/menu" ><a class="inline-block text-[#00754A] underline text-lg font-bold">Tất cả</a></li>
           <li class="mt-0" *ngFor="let c of listCategories" routerLink="/menu/{{c.slug}}"><a class="inline-block font-bold text-lg">{{c.name}}</a></li>
         </ul>
         <ul *ngIf="isLoading" class="flex flex-col sm:flex-row md:flex-col gap-4 sm:gap-6 items-start sm:items-center md:items-start text-left mt-[30px] md:mt-[60px]">

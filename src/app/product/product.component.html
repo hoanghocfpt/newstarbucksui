@@ -1,20 +1,20 @@
-
-<div class="flex p-5 lg:ml-40">  
+<div class="px-[5%]">
+  <div class="flex py-5">  
     <div class="flex items-center font-thin cursor-pointer">
-      Thực đơn /
+      <span class="line-clamp-1 hidden sm:block">Thực đơn /</span>
       <div *ngIf="isLoading" class="inline-block mx-2 animate-pulse bg-gray-200 w-[100px] h-[30px]"></div>
       <div routerLink="/menu/{{product.category}}" *ngIf="!isLoading" class="line-clamp-1 mx-2">{{product.category_name}}</div>/
       <div *ngIf="isLoading" class="inline-block ml-2 animate-pulse bg-gray-200 w-[100px] h-[30px]"></div>
       <div *ngIf="!isLoading" class="font-bold ml-2 line-clamp-1">{{product.slug}}</div>
     </div>
-</div>
-<div class="max-w-6xl px-[5%] mx-auto">
+  </div>
+  <div class="">
     <!-- Main Product Section -->
     <div class="bg-white rounded-lg flex flex-col md:flex-row sm:grid-cols-2 lg:grid-cols-3 ">
       <div class="md:w-1/2">
-        <div class="relative overflow-hidden rounded-md w-full h-[300px] md:h-[500px]">
+        <div class="relative overflow-hidden rounded-md w-full h-[300px] md:h-[500px] sm:h-[450px]">
           <!-- animation load before image fetch -->
-          <div *ngIf="isLoading" class="animate-pulse bg-gray-200 w-full  h-[300px] md:h-[500px]"></div>
+          <div *ngIf="isLoading" class="animate-pulse bg-gray-200 w-full h-[300px] sm:h-[350px] md:h-[500px]"></div>
 
           <!-- image after fetch success -->
           <img *ngIf="!isLoading" [src]="bigImage" alt="Trà Sen Vàng" class="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-250 ease-out cursor-pointer">
@@ -90,3 +90,5 @@
     </div> -->
   </div>
 
+
+</div>

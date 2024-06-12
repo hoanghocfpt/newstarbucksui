@@ -25,7 +25,11 @@ export class HeaderComponent {
   handleClosePopup() {
     this.isOpenSearch = false; // Đóng popup khi click ra ngoài
   }
-  openNav() {
+  openNav(boolean?: boolean) {
+    if (boolean === false) {
+      this.isOpenNav = false;
+      return;
+    }
     if (this.isOpenNav) {
       this.isOpenNav = false;
     } else {    
